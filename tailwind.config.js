@@ -1,5 +1,6 @@
 module.exports = {
-  content: ["./frontend/src/**/*.{html,js}", "./frontend/public/*.html"],
+  // 指定した範囲での変更を検知する
+  content: ["./src/**/*.{html,js}", "./public/*.html"],
   theme: {
     extend: {},
   },
