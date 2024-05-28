@@ -63,4 +63,6 @@ func SetToken(ctx *gin.Context, token string) {
 	ctx.SetSameSite(http.SameSiteLaxMode)
 	//トークン設定
 	ctx.SetCookie("token", token, 2592000, "/", "", true, true)
+
+	ctx.Writer.Header().Values("Set-Cookie")
 }

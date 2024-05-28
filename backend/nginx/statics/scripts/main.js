@@ -43,3 +43,22 @@ logout_btn.addEventListener('click', () => {
         }
     })
 })
+
+const get_user_btn = document.getElementById("get_user_btn");
+
+async function get_user() {
+    const req = await fetch('/app/getuser', {
+        method: 'GET',
+    });
+
+    if (req.status !== 200) {
+        //200番以外
+        return false;
+    }
+
+    console.log(await req.json());
+};
+
+get_user_btn.addEventListener('click', () => {
+    get_user();
+})

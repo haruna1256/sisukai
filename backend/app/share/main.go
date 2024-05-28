@@ -42,7 +42,7 @@ func main() {
 
 		//トークンをクッキーに設定
 		SetToken(ctx, get_token)		
-
+		
 		ctx.Redirect(http.StatusFound, "/statics/index.html")
 	})
 

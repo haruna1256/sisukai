@@ -12,7 +12,8 @@ import (
 	"github.com/markbates/goth"
 	"github.com/markbates/goth/gothic"
 	//"github.com/markbates/goth/providers/discord"
-	"github.com/markbates/goth/providers/microsoftonline"
+	"github.com/markbates/goth/providers/google"
+	"github.com/markbates/goth/providers/line"
 
 	"github.com/gorilla/sessions"
 )
@@ -42,8 +43,10 @@ func Init() {
 //プロバイダ初期化
 func Provider_init() {
 	goth.UseProviders(
+		google.New(os.Getenv("GOOGLE_CLIENT_ID"), os.Getenv("GOOGLE_CLIENT_SECRET"), os.Getenv("GOOGLE_CALLBACK_URL"), "profile", "email"),
+		line.New(os.Getenv("LINE_CLIENT_ID"), os.Getenv("LINE_CLIENT_SECRET"), os.Getenv("LINE_CALLBACK_URL"), "profile", "openid"),
 		//discord.New(os.Getenv("DISCORD_CLIENT_ID"), os.Getenv("DISCORD_CLIENT_SECRET"), os.Getenv("DISCORD_CALLBACK_URL"), discord.ScopeIdentify, discord.ScopeEmail),
-		microsoftonline.New(os.Getenv("Microsoft_ClientID"), os.Getenv("Microsoft_ClientSecret"), os.Getenv("Microsoft_CallbackURL")),
+		//microsoftonline.New(os.Getenv("Microsoft_ClientID"), os.Getenv("Microsoft_ClientSecret"), os.Getenv("Microsoft_CallbackURL")),
 	)
 }
 
