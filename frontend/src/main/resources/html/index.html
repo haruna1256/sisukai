@@ -6,18 +6,20 @@
         <link rel="stylesheet" href="/frontend/src/main/resources/static/output.css">
     </head>
     <body>
-        <header class="h-40 bg-blue-400">
+        <header class="h-40 bg-slate-500 flex items-center">
             <!-- ハンバーガーメニュー -->
-            <div>
-                
+            <div class="bg-black w-32 h-32 absolute left-5">
+                    <span class="bg-white h-2 w-24 absolute top-8 left-3.5"></span>
+                    <span class="bg-white h-2 w-24 absolute top-14 left-3.5"></span>
+                    <span class="bg-white h-2 w-24 absolute top-20 left-3.5"></span>
             </div>
-            <!-- iconとalarmの位置 -->
-            <div class="flex items-center justify-center">
-                <img class="w-24 h-20" src="/frontend/images/alarm.png" alt="alarm">
-                <img class="w-20 h-24" src="/frontend/images/icon.png" alt="icon">
+
+            <!-- iconとalarmの画像配置-->
+            <div class="flex  justify-center absolute right-3">
+                <img class="w-24 h-24 bg-white rounded-full  mr-3 " src="/frontend/images/alarm.png" alt="alarm">
+                <img class="w-24 h-24 bg-white rounded-full" src="/frontend/images/icon.png" alt="icon">
             </div>
         </header>
-        <h1  class="text-3xl font-bold underline">Welcome!</h1>
-        <p>Lorem Ipsum</p>
+        
     </body>
 </html>
