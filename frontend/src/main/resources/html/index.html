@@ -1,49 +1,56 @@
 <!DOCTYPE html>
 <html lang="ja">
-    <head>
-        <meta charset="UTF-8">
-        <title>Title</title>
-        <link rel="stylesheet" href="/frontend/src/main/resources/static/output.css">
-    </head>
-    <body class="bg-orange-100">
-        <!-- header要素 -->
-        <header class="h-40 bg-orange-100 flex items-center">
-            <nav role="navigation">
 
-                <!-- ハンバーガーメニュー -->
-                <div class=" w-32 h-32 absolute left-5">
-                    <span class="bg-black h-2 w-24 absolute top-8 left-3.5"></span>
-                    <span class="bg-black h-2 w-24 absolute top-14 left-3.5"></span>
-                    <span class="bg-black h-2 w-24 absolute top-20 left-3.5"></span>
-                </div>
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <link rel="stylesheet" href="/frontend/src/main/resources/static/output.css" />
+    <style>
+    </style>
+</head>
 
+<body class="bg-orange-100 h-full">
+    <!-- header要素 -->
+    <header class="h-40 bg-orange-100 flex items-center">
+        <nav role="navigation" class="nav">
+            <!-- ハンバーガーメニュー -->
+            <a href="#">
+                <span class="bg-black"></span>
+            </a>
+
+            <!-- メニューオーバーレイ -->
+            <div class="menu-overlay">
                 <ul>
-                    <a href="#"><li>ポイント</li></a>
-                    <a href="#"><li>タスク管理</li></a>
-                    <a href="#"><li>グループ管理</li></a>
+                    <li><a href="#" class="py-2 px-4 block hover:text-white">ポイント</a></li>
+                    <li><a href="#" class="py-2 px-4 block hover:text-white">タスク管理</a></li>
+                    <li><a href="#" class="py-2 px-4 block hover:text-white">グループ管理</a></li>
                 </ul>
-            </nav>
-            
-            <!-- iconとalarmの画像配置-->
-            <div class="flex  justify-center absolute right-3">
-                <img class="w-24 h-24 bg-white rounded-full  mr-3 " src="/frontend/images/alarm.png" alt="alarm">
-                <img class="w-24 h-24 bg-white rounded-full" src="/frontend/images/icon.png" alt="icon">
             </div>
-        </header>
-        <!-- main要素 -->
-        <main>
-            <!-- 今日の予定表示 -->
-            <div>
-                <h2 class="text-5xl mt-6 ml-14 text-orange-500">〇月〇日</h2>
-                <div class="flex-none border-orange-300 bg-orange-200 border-4 mt-5 w-4/5 mr-auto ml-auto h-28 items-center rounded-3xl">
-                    <p class="text-3xl m-1 text-orange-600">Tasks today</p>
-                    <p class="text-4xl ml-4 ">残り〇個</p>
-                </div>
+        </nav>
+
+        <!-- iconとalarmの画像配置 -->
+        <div class="flex justify-center absolute right-3">
+            <img class="w-24 h-24 bg-white rounded-full mr-3" src="/frontend/images/alarm.png" alt="alarm" />
+            <img class="w-24 h-24 bg-white rounded-full" src="/frontend/images/icon.png" alt="icon" />
+        </div>
+    </header>
+
+    <!-- main要素 -->
+    <main>
+        <!-- 今日の予定表示 -->
+        <div>
+            <h2 class="text-5xl mt-6 ml-14 text-orange-500">〇月〇日</h2>
+            <div
+                class="flex-none border-orange-300 bg-orange-200 border-4 mt-5 w-4/5 mr-auto ml-auto h-28 items-center rounded-3xl">
+                <p class="text-3xl m-1 text-orange-600">Tasks today</p>
+                <p class="text-4xl ml-4">残り〇個</p>
             </div>
-            <!-- カレンダー -->
-            <div>
-                <img class="w-full mt-32" src="/frontend/images/Calender.png" alt="カレンダー">
-            </div>
-        </main>
-    </body>
+        </div>
+        <!-- カレンダー -->
+        <div>
+            <img class="w-full mt-32" src="/frontend/images/Calender.png" alt="カレンダー" />
+        </div>
+    </main>
+</body>
+
 </html>
