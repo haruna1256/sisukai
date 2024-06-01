@@ -4,29 +4,24 @@
         <meta charset="UTF-8">
         <title>Title</title>
         <link rel="stylesheet" href="/frontend/src/main/resources/static/output.css">
-        <!-- Tailwind CSSのCDNを追加 -->
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.17/dist/tailwind.min.css" rel="stylesheet">
     </head>
     <body class="bg-orange-100">
         <!-- header要素 -->
         <header class="h-40 bg-orange-100 flex items-center">
             <nav role="navigation">
-                <div class="block relative left-5 z-10 select-none">
-                    <input type="checkbox" class="absolute top-0 left-0 w-12 h-12 cursor-pointer oapacity-0 z-20"/>
 
-                    <!-- ハンバーガーメニュー -->
-                    <div class=" w-32 h-32 absolute left-5">
-                        <span class="block bg-black h-2 w-24 absolute top-8 left-3.5 transition duration-500 ease-in-out transform origin-center"></span>
-                        <span class="block bg-black h-2 w-24 absolute top-14 left-3.5 transition duration-500 ease-in-out transform origin-center"></span>
-                        <span class="block bg-black h-2 w-24 absolute top-20 left-3.5 transition duration-500 ease-in-out transform origin-center"></span>
-                    </div>
-
-                    <ul class="absolute w-72 -ml-36 mt-72 px-8 py-16 bg-gray-200 list-none antialiased transform origin-top-right transition duration-500 ease-in-out -translate-x-full">
-                        <a href="#"><li class="pt-3 pb-3 text-2xl text-gray-900 hover:text-red-500">ポイント</li></a>
-                        <a href="#"><li class="pt-3 pb-3 text-2xl text-gray-900 hover:text-red-500">タスク管理</li></a>
-                        <a href="#"><li class="pt-3 pb-3 text-2xl text-gray-900 hover:text-red-500">グループ管理</li></a>
-                    </ul>
+                <!-- ハンバーガーメニュー -->
+                <div class=" w-32 h-32 absolute left-5">
+                    <span class="bg-black h-2 w-24 absolute top-8 left-3.5"></span>
+                    <span class="bg-black h-2 w-24 absolute top-14 left-3.5"></span>
+                    <span class="bg-black h-2 w-24 absolute top-20 left-3.5"></span>
                 </div>
+
+                <ul>
+                    <a href="#"><li>ポイント</li></a>
+                    <a href="#"><li>タスク管理</li></a>
+                    <a href="#"><li>グループ管理</li></a>
+                </ul>
             </nav>
             
             <!-- iconとalarmの画像配置-->
