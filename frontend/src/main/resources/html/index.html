@@ -5,27 +5,162 @@
     <meta charset="UTF-8" />
     <title>Title</title>
     <link rel="stylesheet" href="/frontend/src/main/resources/static/output.css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <style>
+        button {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            vertical-align: middle;
+            border: 0;
+            background: transparent;
+            border-radius: 0;
+            text-align: inherit;
+            display: inline-block;
+            /* 変更点 */
+            justify-content: center;
+            align-items: center;
+        }
+
+        button:hover {
+            cursor: pointer;
+        }
+
+        /* ハンバーガーメニューのスタイル */
+        .btn {
+            /* ボタンの配置位置 */
+            position: fixed;
+            top: 16px;
+            left: 16px;
+            /* ボタンの大きさ */
+            width: 58px;
+            height: 48px;
+            /* 最前面に */
+            z-index: 10;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 真ん中のバーガー線 */
+        .btn-line {
+            /* 線の長さと高さ */
+            width: 100%;
+            height: 4px;
+            /* バーガー線の色 */
+            background-color: #333;
+            /* バーガー線の位置基準として設定 */
+            position: relative;
+            transition: .2s;
+        }
+
+        /* バーガー線の位置 */
+        .btn-line::before,
+        .btn-line::after {
+            content: "";
+            /* 基準線と同じ大きさと色 */
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: #333;
+            transition: .2s;
+        }
+
+        .btn-line::before {
+            /* 上の線の位置 */
+            transform: translateY(-16px);
+        }
+
+        .btn-line::after {
+            /* 下の線の位置 */
+            transform: translateY(16px);
+        }
+
+        /* メニューが開いているとき */
+        .btn.open {
+            transform: rotate(180deg);
+        }
+
+        .btn-line.open {
+            /* 真ん中の線を透明に */
+            background-color: transparent;
+        }
+
+        .btn-line.open::before,
+        .btn-line.open::after {
+            content: "";
+            /* 上下の線の色を変える */
+            background-color: #333;
+            transition: .2s;
+        }
+
+        .btn-line.open::before {
+            /* 上の線を傾ける */
+            transform: rotate(135deg);
+        }
+
+        .btn-line.open::after {
+            /* 上の線を傾ける */
+            transform: rotate(-135deg);
+        }
+
+        /* メニューのスタイル */
+        .menu {
+            position: fixed;
+            left: 0;
+            top: 0;
+            /* メニューの位置マイナス指定で画面外に */
+            transform: translateX(-100%);
+            width: 70%;
+            height: 100vh;
+            /* メニューを縦に */
+            display: flex;
+            flex-direction: column;
+            color: #efefef;
+            background-color: rgba(167, 148, 58, 0.7);
+            transition: .3s;
+            z-index: 9;
+        }
+
+        .menu-list {
+            width: 100%;
+            padding: 16px;
+            /* メニューテキスト位置をリスト内中心に */
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .menu-list:hover {
+            color: #333;
+            background-color: rgba(255, 255, 255, 0.5);
+            transition: .3s;
+            cursor: pointer;
+        }
+
+        /* メニューを開いたとき */
+        .menu.open {
+            transform: translateX(0);
+        }
+        
     </style>
 </head>
 
-<body class="bg-orange-100 h-full">
+<body class="bg-orange-100 m-0 p-0 box-border">
     <!-- header要素 -->
-    <header class="h-40 bg-orange-100 flex items-center">
-        <nav role="navigation" class="nav">
-            <!-- ハンバーガーメニュー -->
-            <a href="#">
-                <span class="bg-black"></span>
-            </a>
+    <header class="h-40 bg-orange-100 flex items-center relative">
+        <!-- ハンバーガーメニュー -->
+        <button type="button" class="btn js-btn">
+            <span class="btn-line"></span>
+        </button>
 
-            <!-- メニューオーバーレイ -->
-            <div class="menu-overlay">
-                <ul>
-                    <li><a href="#" class="py-2 px-4 block hover:text-white">ポイント</a></li>
-                    <li><a href="#" class="py-2 px-4 block hover:text-white">タスク管理</a></li>
-                    <li><a href="#" class="py-2 px-4 block hover:text-white">グループ管理</a></li>
-                </ul>
-            </div>
+        <!-- メニューオーバーレイ -->
+        <nav>
+            <ul class="menu">
+                <li class="menu-list"><a href="#" class="py-2 px-4 block hover:text-white">ポイント</a></li>
+                <li class="menu-list"><a href="#" class="py-2 px-4 block hover:text-white">タスク管理</a></li>
+                <li class="menu-list"><a href="#" class="py-2 px-4 block hover:text-white">グループ管理</a></li>
+            </ul>
         </nav>
 
         <!-- iconとalarmの画像配置 -->
@@ -51,6 +186,15 @@
             <img class="w-full mt-32" src="/frontend/images/Calender.png" alt="カレンダー" />
         </div>
     </main>
+
+    <script>
+        $(function () {
+            $('.js-btn').on('click', function () { // js-btnクラスをクリックすると、
+                $('.menu').toggleClass('open'); // メニューにopenクラスをつけ外しする
+                $('.btn-line').toggleClass('open'); // バーガーの線にopenクラスをつけ外しする
+            });
+        });
+    </script>
 </body>
 
 </html>
