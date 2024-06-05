@@ -4,6 +4,39 @@
         <meta charset="UTF-8">
         <title>タスク報告画面</title>
         <link rel="stylesheet" href="/frontend/src/main/resources/static/task_report.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet"/>
+        <style>
+            body {
+                height: 100vh;
+                overflow-y: hidden;
+                header {
+                    height: 20%;
+                }
+                main{
+                    height: 80%;
+                }
+                /* footer{
+                    height: 30%;
+                } */
+            }
+            .material-icons {
+                font-size: 90px;
+            }
+            #status-message ,#task-message, #task-deadline {
+                font-size: 40px;
+                line-height: 1;
+            }
+            .btn {
+            background-color: #FFCCC0; /* ボタンの背景色 */
+            border-bottom: 4px solid #FFA07A; /* 下線の色 */
+            box-shadow: 0.1em 0.1em 3px rgba(0, 0, 0, 0.5); /* 影の設定 */
+            width: 400px; 
+            height: 100px;
+            border: none;
+            border-radius: 30px;
+            font-size: 40px;
+            }
+        </style>
     </head>
     <body class="bg-orange-100">
         <!-- header要素 -->
