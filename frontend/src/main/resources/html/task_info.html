@@ -61,7 +61,7 @@
                     <p class="leading-normal tracking-widest" id="task-message">タスクに対するメッセージを表示</p>
                 </div>
                 <div class="flex-grow">
-                    <p class="pl-56" id="task-deadline">期限: YYYY/MM/DD HH:MM</p>
+                    <p class="pl-56" id="task-deadline">期限: 〇月〇日HH:MM</p>
                 </div>
             </div>
             <div class="items-center">
@@ -86,7 +86,11 @@
             document.querySelector('h1').textContent = task.title;
             document.getElementById('task-image').src = task.image;
             document.getElementById('task-message').innerHTML = formattedMessage;
-            document.getElementById('task-deadline').textContent = '期限: ' + task.deadline;
+
+            // 期限の日付フォーマット
+            const deadline = new Date(task.deadline);
+            const formattedDeadline = `${deadline.getMonth() + 1}月${deadline.getDate()}日 ${deadline.getHours()}:${String(deadline.getMinutes()).padStart(2, '0')}`;
+            document.getElementById('task-deadline').textContent = '期限:　' + formattedDeadline;
         </script>
     </body>
 </html>
