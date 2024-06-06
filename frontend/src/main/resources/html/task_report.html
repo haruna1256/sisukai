@@ -77,29 +77,31 @@
                     </div>
                 </form>
         </main>
+        <!-- script要素 -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        <!-- 画像のアップロード・画像のプレビューを表示-->
         <script>
             function readURL(input) {
                 if (input.files && input.files[0]) {
                     var reader = new FileReader();
                     reader.onload = function(e) {
-                        $('#image-preview').attr('src', e.target.result).removeClass('hidden');
-                        $('.placeholder').hide();
+                        document.getElementById('image-preview').src = e.target.result;
                     };
                     reader.readAsDataURL(input.files[0]);
                 } else {
                     removeUpload();
                 }
             }
-
+        
             function removeUpload() {
-                $('#image-preview').attr('src', '/frontend/images/add_image.png').addClass('hidden');
-                $('.placeholder').show();
-                $('.file-upload input[type="file"]').val('');
+                document.getElementById('image-preview').src = '/frontend/images/add_image.png';
+                document.querySelector('.file-upload input[type="file"]').value = '';
             }
-
-            $('.file-upload').on('click', function() {
-                $(this).find('input[type="file"]').trigger('click');
+        
+            document.querySelector('.file-upload').addEventListener('click', function(e) {
+                if (e.target.tagName !== 'INPUT') {
+                    this.querySelector('input[type="file"]').click();
+                }
             });
         </script>
     </body>
