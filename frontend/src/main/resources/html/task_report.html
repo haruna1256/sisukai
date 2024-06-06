@@ -41,7 +41,6 @@
                 padding-left: 40px;
             }
             .file-upload input[type='file'] {
-                position: absolute;
                 top: 0;
                 left: 0;
                 width: 100%;
@@ -67,7 +66,7 @@
                     <!-- 画像アップロード -->
                     <div class="file-upload rounded-3xl border-4 w-full h-3/6 bg-gray-300 flex justify-center items-center">
                         <input class="" type="file" onchange="readURL(this);" accept=""/>
-                        <img src="/frontend/images/add_image.png" alt="Add Image" class="" id="image-preview"/>
+                        <img src="/frontend/images/add_image.png" alt="Add Image" class="absolute" id="image-preview"/>
                     </div>
                     <!-- テキストエリア　-->
                     <input type="text" name="message" placeholder="伝えること" class="rounded-3xl w-full mt-16 mr-auto ml-auto h-24 items-center"/>
@@ -92,14 +91,14 @@
                     removeUpload();
                 }
             }
-        
+    
             function removeUpload() {
                 document.getElementById('image-preview').src = '/frontend/images/add_image.png';
                 document.querySelector('.file-upload input[type="file"]').value = '';
             }
-        
+    
             document.querySelector('.file-upload').addEventListener('click', function(e) {
-                if (e.target.tagName !== 'INPUT') {
+                if (e.target.classList.contains('file-upload')) {
                     this.querySelector('input[type="file"]').click();
                 }
             });
