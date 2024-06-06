@@ -36,15 +36,35 @@
             border-radius: 30px;
             font-size: 40px;
             }
+            input::placeholder{
+                font-size: 30px;
+                padding-left: 40px;
+            }
         </style>
     </head>
-    <body class="bg-orange-100">
+    <body class="bg-orange-50">
         <!-- header要素 -->
-        <header>
+        <header class="flex justify-center items-end h-1/6 pb-4">
+            <h1 class="text-8xl text-orange-500 font-bold flex justify-center items-end">タスクのタイトル</h1>
         </header>
         <!-- main要素 -->
-        <main>
-
+        <main class="flex flex-col items-center">
+            <!-- 現在のステータスを表示 -->
+            <div class="flex border-orange-100 bg-orange-100 border-4 mt-16 w-4/5 h-52 items-center rounded-3xl">
+                <span class="material-icons text-orange-500 ml-12">notifications</span>
+                <span class="ml-6" id="status-message">ステータスメッセージの表示</span>
+            </div>
+                <form action="#" method="post" class="flex flex-col items-center mt-24 ml-16 mr-16 pl-8 pr-8 w-9/12 h-4/6">
+                    <div class="rounded-3xl border-4 w-full h-3/6 bg-gray-300 flex justify-center items-center">
+                        <img src="/frontend/images/add_image.png" alt="Add Image" class="" id="image-preview"/>
+                    </div>
+                    <!-- テキストエリア　-->
+                    <input type="text" name="message" placeholder="伝えること" class="rounded-3xl w-full mt-16 mr-auto ml-auto h-24 items-center"/>
+                    <!-- ボタン-->
+                    <div class="mt-20 pt-20">
+                        <button type="submit" class="btn">やりました！</button>
+                    </div>
+                </form>
         </main>
     </body>
 </html>
