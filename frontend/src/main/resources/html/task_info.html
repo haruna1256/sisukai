@@ -156,16 +156,26 @@
                 font-size: 40px;
                 line-height: 1;
             }
-
+            /*戻るボタン、終わりボタンのスタイル*/
+            .back-btn{
+                background-color: #3bc28e; /* ボタンの背景色 */
+                border-bottom: 4px solid #FFA07A; /* 下線の色 */
+                box-shadow: 0.1em 0.1em 3px rgba(0, 0, 0, 0.5); /* 影の設定 */
+                width: 350px; 
+                height: 125px;
+                border: none;
+                border-radius: 30px;
+                font-size: 40px;
+            }
             .end-btn{
-            background-color: #FFCCC0; /* ボタンの背景色 */
-            border-bottom: 4px solid #FFA07A; /* 下線の色 */
-            box-shadow: 0.1em 0.1em 3px rgba(0, 0, 0, 0.5); /* 影の設定 */
-            width: 300px; 
-            height: 100px;
-            border: none;
-            border-radius: 30px;
-            font-size: 40px;
+                background-color: #FFCCC0; /* ボタンの背景色 */
+                border-bottom: 4px solid #FFA07A; /* 下線の色 */
+                box-shadow: 0.1em 0.1em 3px rgba(0, 0, 0, 0.5); /* 影の設定 */
+                width: 350px; 
+                height: 125px;
+                border: none;
+                border-radius: 30px;
+                font-size: 40px;
             }
 
             
@@ -221,8 +231,10 @@
                     <p class="pl-56" id="task-deadline">期限: 〇月〇日HH:MM</p>
                 </div>
             </div>
-            <div class="items-center">
-                <button class="end-btn">終わり</button>
+            <!-- ボタン　-->>
+            <div class="flex justify-between">
+                <button class="back-btn text-center mr-20">戻る</button>
+                <button class="end-btn text-center">終わり</button>
             </div>
         </main>
         <!-- script要素 -->
