@@ -156,6 +156,9 @@
                 font-size: 40px;
                 line-height: 1;
             }
+            #countdown .text-red-500 {
+                font-size: 50px; /* カウントダウンの文字サイズ */
+            }
             /*戻るボタン、終わりボタンのスタイル*/
             .back-btn{
                 background-color: #3bc28e; /* ボタンの背景色 */
@@ -209,16 +212,23 @@
         <!-- main要素 -->
         <main class="flex flex-col items-center">
             <!-- タスクタイトル表示 -->
-            <div class="flex justify-center items-end h-1/6 pb-4">
+            <div class="flex justify-center items-end mt-14 pb-4">
                 <h1 class="text-8xl text-orange-500 font-bold flex justify-center items-end">タスクのタイトル</h1>
             </div>
             <!-- 現在のステータスを表示 -->
-            <div class="flex border-orange-200 bg-orange-200 border-4 mt-16 w-4/5 h-52 items-center rounded-3xl">
+            <div class="flex border-orange-200 bg-orange-200 border-4 mt-16 w-4/5 h-56 items-center rounded-3xl">
                 <span class="material-icons text-orange-500 ml-12">notifications</span>
                 <span class="ml-6" id="status-message">ステータスメッセージの表示</span>
             </div>
             <!-- タスクの詳細コンテナ　-->
-            <div class="task-info-container flex flex-col items-center mt-24 ml-16 mr-16 pl-8 pr-8 w-9/12 h-4/6">
+            <div class="task-info-container flex flex-col items-center mt-10 ml-16 mr-16 pl-8 pr-8 w-9/12 h-4/6">
+                <!-- タスクの残り時間の表示 -->
+                <div class="pb-10" id="countdown">
+                    <span class="text-red-500"id="days"></span>
+                    <span class="text-red-500"id="hours"></span>
+                    <span class="text-red-500"id="minutes"></span>
+                    <span class="text-red-500"id="seconds"></span>
+                </div>
                 <!-- タスクのイメージ画像　-->
                 <div class="rounded-3xl overflow-hidden h-3/6">
                     <img src="" alt="Task Image" class="w-full h-full" id="task-image"/>
@@ -226,9 +236,6 @@
                 <!-- メッセージコンテナ -->
                 <div class="mt-14 h-2/6">
                     <p class="leading-normal tracking-widest" id="task-message">タスクに対するメッセージを表示</p>
-                </div>
-                <div class="flex-grow">
-                    <p class="pl-56" id="task-deadline">期限: 〇月〇日HH:MM</p>
                 </div>
             </div>
             <!-- ボタン　-->>
@@ -240,6 +247,7 @@
         <!-- script要素 -->
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
         <script>
             // ハンバーガーメニューのjs
             $(function () {
@@ -265,10 +273,39 @@
             document.getElementById('task-image').src = task.image;
             document.getElementById('task-message').innerHTML = formattedMessage;
 
-            // 期限の日付フォーマット
-            const deadline = new Date(task.deadline);
-            const formattedDeadline = `${deadline.getMonth() + 1}月${deadline.getDate()}日 ${deadline.getHours()}:${String(deadline.getMinutes()).padStart(2, '0')}`;
-            document.getElementById('task-deadline').textContent = '期限:　' + formattedDeadline;
+            // カウントダウンのサンプルコードのコピー
+            $(document).ready(function() {
+                // カウントダウンの終了日時を設定
+                let countdownDate = new Date("2024-06-12T00:00:00");
+
+                let x = setInterval(function() {
+                    
+                    // 現在の日時を取得
+                    let now = new Date();
+                    
+                    // カウントダウンまでの残り時間を計算
+                    let distance = countdownDate - now;
+
+                    // 残り時間を日数、時間、分、秒に変換
+                    let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                    let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                    // カウントダウンが終了した場合はメッセージを表示してタイマーを停止
+                    if (distance < 0) {
+                    clearInterval(x);
+                    $("#countdown").html("<span>カウントダウン終了</span>");
+                    } else {
+                    // 残り時間を表示
+                    $("#days").text(days + ":");
+                    $("#hours").text(hours + ":");
+                    $("#minutes").text(minutes + ":");
+                    $("#seconds").text(seconds + ":");
+                    }
+                }, 1000); // 1000ミリ秒ごとに更新
+            });
+
         </script>
     </body>
 </html>
