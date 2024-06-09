@@ -139,7 +139,8 @@
                 font-size: 40px;
                 line-height: 1;
             }
-            .btn {
+
+            .end-btn{
             background-color: #FFCCC0; /* ボタンの背景色 */
             border-bottom: 4px solid #FFA07A; /* 下線の色 */
             box-shadow: 0.1em 0.1em 3px rgba(0, 0, 0, 0.5); /* 影の設定 */
@@ -200,11 +201,18 @@
                 </div>
             </div>
             <div class="items-center">
-                <button class="btn">終わり</button>
+                <button class="end-btn">終わり</button>
             </div>
         </main>
         <!-- script要素 -->
         <script>
+            // ハンバーガーメニューのjs
+            $(function () {
+                $('.js-btn').on('click', function () { // js-btnクラスをクリックすると、
+                    $('.menu').toggleClass('open'); // メニューにopenクラスをつけ外しする
+                    $('.btn-line').toggleClass('open'); // バーガーの線にopenクラスをつけ外しする
+                });
+            });
             // サンプルデータ
             const task = {
                 status: '手伝ってください！',
