@@ -19,6 +19,23 @@
                     height: 30%;
                 } */
             }
+            button {
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+                vertical-align: middle;
+                border: 0;
+                background: transparent;
+                border-radius: 0;
+                text-align: inherit;
+                display: inline-block;
+                justify-content: center;
+                align-items: center;
+            }
+
+            button:hover {
+                cursor: pointer;
+            }
             /* ハンバーガーメニューのスタイル */
             .btn {
                 /* ボタンの配置位置 */
@@ -205,6 +222,8 @@
             </div>
         </main>
         <!-- script要素 -->
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
         <script>
             // ハンバーガーメニューのjs
             $(function () {
