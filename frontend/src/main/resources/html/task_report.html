@@ -170,7 +170,7 @@
                 border-radius: 30px;
                 font-size: 40px;
             }
-            .end-btn{
+            .report-btn{
                 background-color: #FFCCC0; /* ボタンの背景色 */
                 border-bottom: 4px solid #FFA07A; /* 下線の色 */
                 box-shadow: 0.1em 0.1em 3px rgba(0, 0, 0, 0.5); /* 影の設定 */
@@ -221,8 +221,12 @@
         </header>
         <!-- main要素 -->
         <main class="flex flex-col items-center">
+            <!-- タスクタイトル表示 -->
+            <div class="flex justify-center items-end mt-14 pb-4">
+                <h1 class="text-8xl text-orange-500 font-bold flex justify-center items-end">タスクのタイトル</h1>
+            </div>
             <!-- 現在のステータスを表示 -->
-            <div class="flex border-orange-100 bg-orange-100 border-4 mt-16 w-4/5 h-52 items-center rounded-3xl">
+            <div class="flex border-orange-200 bg-orange-200 border-4 mt-16 w-4/5 h-56 items-center rounded-3xl">
                 <span class="material-icons text-orange-500 ml-12">notifications</span>
                 <span class="ml-6" id="status-message">ステータスメッセージの表示</span>
             </div>
@@ -234,9 +238,10 @@
                     </div>
                     <!-- テキストエリア　-->
                     <input type="text" name="message" placeholder="伝えること" class="rounded-3xl w-full mt-16 mr-auto ml-auto h-24 items-center"/>
-                    <!-- ボタン-->
-                    <div class="mt-20 pt-20">
-                        <button type="submit" class="btn">やりました！</button>
+                    <!-- ボタン　-->>
+                    <div class="flex justify-between">
+                        <button class="back-btn text-center mr-20">戻る</button>
+                        <button class="report-btn text-center">終わり</button>
                     </div>
                 </form>
         </main>
