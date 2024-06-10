@@ -159,7 +159,7 @@
             #countdown .text-red-500 {
                 font-size: 50px; /* カウントダウンの文字サイズ */
             }
-            /*戻るボタン、終わりボタンのスタイル*/
+            /*戻るボタン、報告ボタンのスタイル*/
             .back-btn{
                 background-color: #3bc28e; /* ボタンの背景色 */
                 border-bottom: 4px solid #FFA07A; /* 下線の色 */
@@ -230,18 +230,25 @@
                 <span class="material-icons text-orange-500 ml-12">notifications</span>
                 <span class="ml-6" id="status-message">ステータスメッセージの表示</span>
             </div>
-                <form action="#" method="post" class="flex flex-col items-center mt-24 ml-16 mr-16 pl-8 pr-8 w-9/12 h-4/6">
+            <!-- タスクの残り時間の表示 -->
+            <div class="mt-10" id="countdown">
+                <span class="text-red-500"id="days"></span>
+                <span class="text-red-500"id="hours"></span>
+                <span class="text-red-500"id="minutes"></span>
+                <span class="text-red-500"id="seconds"></span>
+            </div>
+                <form action="#" method="post" class="flex flex-col items-center mt-10 ml-16 mr-16 pl-8 pr-8 w-9/12 h-4/6">
                     <!-- 画像アップロード -->
                     <div class="file-upload rounded-3xl border-4 w-full h-3/6 bg-gray-300 flex justify-center items-center">
                         <input class="" type="file" onchange="readURL(this);" accept=""/>
                         <img src="/frontend/images/add_image.png" alt="Add Image" class="absolute" id="image-preview"/>
                     </div>
                     <!-- テキストエリア　-->
-                    <input type="text" name="message" placeholder="伝えること" class="rounded-3xl w-full mt-16 mr-auto ml-auto h-24 items-center"/>
+                    <input type="text" name="message" placeholder="伝えること" class="rounded-3xl w-full mt-16 mb-1 mr-auto ml-auto h-24 items-center"/>
                     <!-- ボタン　-->>
-                    <div class="flex justify-between">
+                    <div class="flex justify-between mt-56 mb-1">
                         <button class="back-btn text-center mr-20">戻る</button>
-                        <button class="report-btn text-center">終わり</button>
+                        <button class="report-btn text-center">やりました！</button>
                     </div>
                 </form>
         </main>
@@ -280,6 +287,40 @@
                     this.querySelector('input[type="file"]').click();
                 }
             });
+
+            // カウントダウンのサンプルコードのコピー
+            $(document).ready(function() {
+                // カウントダウンの終了日時を設定
+                let countdownDate = new Date("2024-06-12T00:00:00");
+
+                let x = setInterval(function() {
+                    
+                    // 現在の日時を取得
+                    let now = new Date();
+                    
+                    // カウントダウンまでの残り時間を計算
+                    let distance = countdownDate - now;
+
+                    // 残り時間を日数、時間、分、秒に変換
+                    let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                    let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                    // カウントダウンが終了した場合はメッセージを表示してタイマーを停止
+                    if (distance < 0) {
+                    clearInterval(x);
+                    $("#countdown").html("<span>カウントダウン終了</span>");
+                    } else {
+                    // 残り時間を表示
+                    $("#days").text(days + ":");
+                    $("#hours").text(hours + ":");
+                    $("#minutes").text(minutes + ":");
+                    $("#seconds").text(seconds + ":");
+                    }
+                }, 1000); // 1000ミリ秒ごとに更新
+            });
+
         </script>
     </body>
 </html>
