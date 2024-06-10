@@ -1,4 +1,12 @@
-/postgresql
 __debug_bin*
+/nginx/keys/*
+/data
 .env
-*.db
+/auth/src/test.db
+
+/auth/src/assets/UserIcons
+!/auth/src/assets/userIcons/default.png
+
+auth/src/keys/*
+!/auth/src/keys/readme.md
+app/src/ed25519.pub
