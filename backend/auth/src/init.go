@@ -2,9 +2,12 @@ package main
 
 import (
 	"auth/auth"
-	"auth/database"
+	"auth/controller"
+	"auth/model"
+	"auth/service"
 	"auth/session"
 	"log"
+	"os"
 
 	"github.com/joho/godotenv"
 )
@@ -26,11 +29,17 @@ func Init() {
 	loadEnv()
 
 	// データベース接続
-	database.Init()
+	model.Init()
 
 	// セッション初期化
-	session.Init()
+	session.Init(os.Getenv("JWT_SECRET"))
 
 	//JWt 初期化
 	auth.Init()
+
+
+	//Oauth初期化
+	controller.Oauth_Init()
+
+	service.Init()
 }
