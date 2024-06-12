@@ -186,13 +186,19 @@
             <h1 class="text-8xl text-orange-500 mt-24 ml-14">ポイント</h1>
             <!-- ポイント表示　-->
             <div class="flex items-center justify-center h-2/6">
-                <p class="text-center text-4xl"><span class="text-8xl">12000</span>pt</p>
+                <p id="points" class="text-center text-4xl"><span id="points-span" class="text-8xl">ポイント</span>pt</p>
             </div>
             <!-- ランキング -->
-            <div class="border-l-orange-200 bg-orange-200 boorder-4 w-4/5 h-4/6 ml-auto mr-auto rounded-3xl">
+            <div class="items-center border-l-orange-200 bg-orange-200 boorder-4 w-4/5 h-4/6 mr-auto ml-auto rounded-3xl">
                 <h2 class="text-center text-orange-500 text-7xl pt-12">ランキング</h2>
+                <!-- ランキングコンテナ -->
+                    <div id="ranking" class="h-5/6 w-4/5 mt-16 mr-auto ml-auto">
+                        <!-- ランキングの表示-->
+                    </div>
+                <div>
+                    
+                </div>
             </div>
-            <!-- ご褒美一覧 -->
         </main>
         <script>
             // ハンバーガーメニューのjsd
@@ -201,6 +207,38 @@
                     $('.menu').toggleClass('open'); // メニューにopenクラスをつけ外しする
                     $('.btn-line').toggleClass('open'); // バーガーの線にopenクラスをつけ外しする
                 });
+            });
+
+            // サンプルデータ
+            const sampleData = {
+                points: 12000,
+                ranking: [
+                    { name: "お母さん", points: 8000 },
+                    { name: "お兄さん", points: 7000 },
+                    { name: "いもうと", points: 12000 },
+                    { name: "お父さん", points: 5000 }
+                ]
+            };
+
+            // データをポイントの多い順にソート
+            sampleData.ranking.sort((a, b) => b.points - a.points);
+
+            // ポイントを表示
+            document.getElementById('points-span').textContent = sampleData.points;
+
+            // ランキングを表示
+            const rankingContainer = document.getElementById('ranking');
+            sampleData.ranking.forEach((item, index) => {
+                const rankingItem = document.createElement('div');
+                rankingItem.className = 'flex justify-between items-center bg-orange-50 h-36 mb-10 rounded-3xl';
+                rankingItem.innerHTML = `
+                    <div class="flex items-center">
+                        <span class="text-7xl ml-4">${index + 1}</span>
+                        <span class="text-6xl ml-6">${item.name}</span>
+                    </div>
+                    <span class="text-5xl mr-4">${item.points}pt</span>
+                `;
+                rankingContainer.appendChild(rankingItem);
             });
         </script>
     </body>
