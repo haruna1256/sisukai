@@ -16,8 +16,6 @@ type User struct {
 	Password string //パスワード
 
 	IconPath string  //アイコンパス
-
-	GroupID string //グループID
 }
 
 func CreateUser(utype, name, password string) error {

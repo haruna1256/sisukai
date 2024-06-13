@@ -18,6 +18,4 @@ var (
 func Init() {
 	//DB接続
 	Init_DB()
-
-
 }
