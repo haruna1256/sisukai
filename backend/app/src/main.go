@@ -34,7 +34,7 @@ func main() {
 
 		ctx.JSON(http.StatusOK, gin.H{
 			"message": "auth success",
-		})
+		})a
 	})
 
 	router.Run(":3001") // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")

@@ -5,11 +5,8 @@ import (
   	"gorm.io/driver/sqlite"
 )
 
-var (
-	dbconn *gorm.DB = nil
-)
 
-func Init() {
+func Init_DB() {
 	db, err := gorm.Open(sqlite.Open("test.db"), &gorm.Config{})
 	if err != nil {
 		panic("failed to connect database")

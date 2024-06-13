@@ -8,6 +8,7 @@ type Group struct {
 
 	OwnerID   string //オーナーID
 	Users     []User `gorm:"foreignkey:GroupID"`
+	Admins    []User `gorm:"foreignkey:GroupID"`
 }
 
 //グループを作成
@@ -18,5 +19,12 @@ func CreateGroup(groupName, ownerID string) error {
 		return err
 	}
 
+	//グループを作成
+	result := dbconn.Create(&Group{
+		GroupID:   gid.String(),
+		GroupName: groupName,
+		OwnerID:   ownerID,
+	})
 
+	return result.Error
 }
