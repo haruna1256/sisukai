@@ -147,10 +147,30 @@
             transform: translateX(0);
             /* 画面幅の30%にメニューを表示 */
         }
+
+        /* グレイレイヤーの仕様 */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 8; /* メニューの下に */
+            display: none;
+        }
+
+        /* グレイレイヤーを表示する */
+        .overlay.show {
+            display: block;
+        }
     </style>
 </head>
 
 <body class="bg-orange-100 m-0 p-0 box-border font-kiwi-maru"">
+    <!-- グレイレイヤー -->
+    <div class="overlay"></div>
+
     <!-- header要素 -->
     <header class="h-40 bg-orange-100 flex items-center">
         <!-- ハンバーガーメニュー -->
@@ -198,6 +218,7 @@
             $('.js-btn').on('click', function () { // js-btnクラスをクリックすると、
                 $('.menu').toggleClass('open'); // メニューにopenクラスをつけ外しする
                 $('.btn-line').toggleClass('open'); // バーガーの線にopenクラスをつけ外しする
+                $('.overlay').toggleClass('show'); // グレイレイヤーにshowクラスをつけ外しする
             });
         });
     </script>
